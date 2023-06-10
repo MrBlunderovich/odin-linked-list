@@ -144,6 +144,20 @@ export default function LinkedList(initialValues = []) {
     headPointer.next = currentNode;
   }
 
+  function trimToSize(newSize = undefined) {
+    if (newSize >= size() || newSize < 0 || newSize === undefined) {
+      console.error(
+        `New size out of range. Range is [0:${
+          size() - 1
+        }]. New size is ${newSize}. Trim failed.`
+      );
+      return;
+    }
+    const newTailElement = traverse(newSize - 1);
+    newTailElement.next = null;
+    return;
+  }
+
   /**
    * Returns an element with specified index (0-based)
    * or last element of the list if index ommited.
@@ -184,6 +198,7 @@ export default function LinkedList(initialValues = []) {
     insertAt,
     removeAt,
     reverse,
+    trimToSize,
   };
 
   function ListNode(value = null) {

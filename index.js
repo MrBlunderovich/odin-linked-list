@@ -24,3 +24,5 @@ newList.removeAt();
 console.log("toString:", newList.toString());
 newList.reverse();
 console.log("toString:", newList.toString());
+newList.trimToSize(3);
+console.log("toString:", newList.toString());
