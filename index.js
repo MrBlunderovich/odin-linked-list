@@ -20,3 +20,5 @@ console.log("toArray:", newList.toArray());
 console.log("toString:", newList.toString());
 newList.insertAt(77, 30);
 console.log("toString:", newList.toString());
+newList.removeAt();
+console.log("toString:", newList.toString());

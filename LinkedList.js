@@ -34,7 +34,9 @@ export default function LinkedList(initialValues = []) {
 
   function at(index = undefined) {
     if (index >= size() || index < 0) {
-      console.error(`Index out of range. Range is [0:${size() - 1}]`);
+      console.error(
+        `Index out of range. Range is [0:${size() - 1}]. Index is ${index}.`
+      );
       return undefined;
     }
     return traverse(index).value;
@@ -96,15 +98,33 @@ export default function LinkedList(initialValues = []) {
     if (index > listSize) {
       index = listSize;
       console.warn(
-        `Index out of range. Range is [0:${size() - 1}]. Inserting at the tail`
+        `Index out of range. Range is [0:${
+          size() - 1
+        }]. Index is ${index}. Inserting at the tail`
       );
     }
     const previousNode = traverse(index - 1);
-    const shiftNode = previousNode.next;
+    const nodeToShift = previousNode.next;
     const newNode = ListNode(value);
-    newNode.next = shiftNode;
+    newNode.next = nodeToShift;
     previousNode.next = newNode;
     return true;
+  }
+
+  function removeAt(index = undefined) {
+    if (index < 0 || index > size() - 1 || index === undefined) {
+      console.error(
+        `Index out of range. Range is [0:${
+          size() - 1
+        }]. Index is ${index}. Removal failed.`
+      );
+      return undefined;
+    }
+    const previousNode = traverse(index - 1);
+    const nodeToRemove = previousNode.next;
+    const nodeToShift = nodeToRemove.next;
+    previousNode.next = nodeToShift;
+    return nodeToRemove.value;
   }
 
   /**
@@ -115,7 +135,9 @@ export default function LinkedList(initialValues = []) {
   function traverse(index = undefined) {
     let destination = index + 1;
     if (index >= size() || index < -1) {
-      console.error(`Index out of range. Range is [-1:${size() - 1}]`);
+      console.error(
+        `Index out of range. Range is [-1:${size() - 1}]. Index is ${index}.`
+      );
       return undefined;
     }
     if (index === undefined) {
@@ -143,6 +165,7 @@ export default function LinkedList(initialValues = []) {
     toArray,
     toString,
     insertAt,
+    removeAt,
   };
 
   function ListNode(value = null) {
