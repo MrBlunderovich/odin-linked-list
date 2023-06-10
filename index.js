@@ -14,3 +14,5 @@ console.log("pop:", newList.pop());
 console.log("at index2:", newList.at(2));
 console.log("contains 1:", newList.contains(1));
 console.log("contains 10:", newList.contains(10));
+console.log("find 3:", newList.find(3));
+console.log("find 30:", newList.find(30));

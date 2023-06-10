@@ -62,6 +62,17 @@ export default function LinkedList(initialValues = []) {
     return false;
   }
 
+  function find(value) {
+    let currentElement = headPointer;
+    for (let index = 0; index < size(); index++) {
+      currentElement = currentElement.next;
+      if (currentElement.value === value) {
+        return index;
+      }
+    }
+    return null;
+  }
+
   /**
    * Returns an element with specified index (0-based)
    * or last element of the list if index ommited.
@@ -94,6 +105,7 @@ export default function LinkedList(initialValues = []) {
     at,
     pop,
     contains,
+    find,
   };
 
   function ListNode(value = null) {
