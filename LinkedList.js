@@ -41,6 +41,10 @@ export default function LinkedList(initialValues = []) {
   }
 
   function pop() {
+    if (size() < 1) {
+      console.error("Nothing to pop, list is empty");
+      return undefined;
+    }
     const secondToTailNode = traverse(size() - 2);
     const tailNode = secondToTailNode.next;
     secondToTailNode.next = null;
