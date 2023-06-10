@@ -24,6 +24,18 @@ export default function LinkedList(initialValues = []) {
     return counter;
   }
 
+  function head() {
+    return headPointer.next;
+  }
+
+  function tail() {
+    return traverse();
+  }
+
+  function at(index = undefined) {
+    return traverse(index).value;
+  }
+
   /**
    * Returns an element with specified index (0-based)
    * or last element of the list if index ommited.
@@ -32,7 +44,7 @@ export default function LinkedList(initialValues = []) {
   function traverse(index = undefined) {
     let destination = index + 1;
     if (index > size()) {
-      console.log("no such index: ", index + 1);
+      console.error("index out of range: ", index + 1);
       return;
     }
     if (index === undefined) {
@@ -47,8 +59,14 @@ export default function LinkedList(initialValues = []) {
     }
     return currentElement;
   }
-
-  return { head: headPointer.next, append, prepend, size };
+  return {
+    append,
+    prepend,
+    size,
+    head,
+    tail,
+    at,
+  };
 
   function ListNode(value = null) {
     return { value, next: null };
