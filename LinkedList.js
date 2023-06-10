@@ -33,7 +33,18 @@ export default function LinkedList(initialValues = []) {
   }
 
   function at(index = undefined) {
+    if (index >= size() || index < 0) {
+      console.error(`Index out of range. Range is [0:${size() - 1}]`);
+      return undefined;
+    }
     return traverse(index).value;
+  }
+
+  function pop() {
+    const secondToTailNode = traverse(size() - 2);
+    const tailNode = secondToTailNode.next;
+    secondToTailNode.next = null;
+    return tailNode.value;
   }
 
   /**
@@ -43,9 +54,9 @@ export default function LinkedList(initialValues = []) {
    */
   function traverse(index = undefined) {
     let destination = index + 1;
-    if (index > size()) {
-      console.error("index out of range: ", index + 1);
-      return;
+    if (index >= size() || index < -1) {
+      console.error(`Index out of range. Range is [-1:-${size() - 1}]`);
+      return undefined;
     }
     if (index === undefined) {
       destination = size();
@@ -66,6 +77,7 @@ export default function LinkedList(initialValues = []) {
     head,
     tail,
     at,
+    pop,
   };
 
   function ListNode(value = null) {

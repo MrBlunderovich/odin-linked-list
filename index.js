@@ -7,4 +7,6 @@ console.log("prepend 1:", newList.prepend(1));
 console.log("append 3:", newList.append(3));
 console.log("head:", newList.head());
 console.log("tail:", newList.tail());
-console.log("at:", newList.at(2));
+console.log("at index2:", newList.at(2));
+console.log("pop:", newList.pop());
+console.log("at index2:", newList.at(2));
