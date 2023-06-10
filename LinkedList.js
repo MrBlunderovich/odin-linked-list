@@ -73,6 +73,21 @@ export default function LinkedList(initialValues = []) {
     return null;
   }
 
+  function toArray() {
+    let currentElement = headPointer;
+    const output = [];
+    while (currentElement.next) {
+      currentElement = currentElement.next;
+      output.push(currentElement.value);
+    }
+    return output;
+  }
+
+  function toString() {
+    const array = toArray();
+    return array.length ? `( ${toArray().join(" ) -> ( ")} ) -> null` : "null";
+  }
+
   /**
    * Returns an element with specified index (0-based)
    * or last element of the list if index ommited.
@@ -106,6 +121,8 @@ export default function LinkedList(initialValues = []) {
     pop,
     contains,
     find,
+    toArray,
+    toString,
   };
 
   function ListNode(value = null) {
