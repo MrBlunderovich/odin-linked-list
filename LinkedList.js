@@ -88,6 +88,25 @@ export default function LinkedList(initialValues = []) {
     return array.length ? `( ${toArray().join(" ) -> ( ")} ) -> null` : "null";
   }
 
+  function insertAt(value, index = 0) {
+    if (index < 0 || value === undefined) {
+      return false;
+    }
+    const listSize = size();
+    if (index > listSize) {
+      index = listSize;
+      console.warn(
+        `Index out of range. Range is [0:${size() - 1}]. Inserting at the tail`
+      );
+    }
+    const previousNode = traverse(index - 1);
+    const shiftNode = previousNode.next;
+    const newNode = ListNode(value);
+    newNode.next = shiftNode;
+    previousNode.next = newNode;
+    return true;
+  }
+
   /**
    * Returns an element with specified index (0-based)
    * or last element of the list if index ommited.
@@ -96,7 +115,7 @@ export default function LinkedList(initialValues = []) {
   function traverse(index = undefined) {
     let destination = index + 1;
     if (index >= size() || index < -1) {
-      console.error(`Index out of range. Range is [-1:-${size() - 1}]`);
+      console.error(`Index out of range. Range is [-1:${size() - 1}]`);
       return undefined;
     }
     if (index === undefined) {
@@ -123,6 +142,7 @@ export default function LinkedList(initialValues = []) {
     find,
     toArray,
     toString,
+    insertAt,
   };
 
   function ListNode(value = null) {
