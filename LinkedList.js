@@ -41,7 +41,7 @@ export default function LinkedList(initialValues = []) {
     return currentElement;
   }
 
-  return {};
+  return { ...head };
 
   function ListNode(value = null) {
     return { value, next: null };
