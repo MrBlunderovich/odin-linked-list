@@ -127,6 +127,23 @@ export default function LinkedList(initialValues = []) {
     return nodeToRemove.value;
   }
 
+  function reverse() {
+    if (!headPointer.next) {
+      return undefined;
+    }
+    let previousNode = null;
+    let currentNode = headPointer.next;
+    let nextNode = null;
+    while (currentNode.next) {
+      nextNode = currentNode.next;
+      currentNode.next = previousNode;
+      previousNode = currentNode;
+      currentNode = nextNode;
+    }
+    currentNode.next = previousNode;
+    headPointer.next = currentNode;
+  }
+
   /**
    * Returns an element with specified index (0-based)
    * or last element of the list if index ommited.
@@ -166,6 +183,7 @@ export default function LinkedList(initialValues = []) {
     toString,
     insertAt,
     removeAt,
+    reverse,
   };
 
   function ListNode(value = null) {

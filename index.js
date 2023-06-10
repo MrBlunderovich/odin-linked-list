@@ -22,3 +22,5 @@ newList.insertAt(77, 30);
 console.log("toString:", newList.toString());
 newList.removeAt();
 console.log("toString:", newList.toString());
+newList.reverse();
+console.log("toString:", newList.toString());
