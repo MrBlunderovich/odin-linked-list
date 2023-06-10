@@ -1,14 +1,21 @@
 export default function LinkedList(initialValues = []) {
-  const head = { next: null };
+  const headPointer = { next: null };
 
   function append(value) {
     const tailNode = traverse();
     tailNode.next = ListNode(value);
-    return size();
+    return headPointer.next;
+  }
+
+  function prepend(value) {
+    const newNode = ListNode(value);
+    newNode.next = headPointer.next;
+    headPointer.next = newNode;
+    return headPointer.next;
   }
 
   function size() {
-    let currentElement = head;
+    let currentElement = headPointer;
     let counter = 0;
     while (currentElement.next) {
       counter++;
@@ -24,15 +31,15 @@ export default function LinkedList(initialValues = []) {
    */
   function traverse(index = undefined) {
     let destination = index + 1;
-    if (index > listLength()) {
+    if (index > size()) {
       console.log("no such index: ", index + 1);
       return;
     }
     if (index === undefined) {
-      destination = listLength();
+      destination = size();
     }
 
-    let currentElement = head;
+    let currentElement = headPointer;
     for (let i = 0; i < destination; i++) {
       if (currentElement.next) {
         currentElement = currentElement.next;
@@ -41,7 +48,7 @@ export default function LinkedList(initialValues = []) {
     return currentElement;
   }
 
-  return { ...head };
+  return { head: headPointer.next, append, prepend, size };
 
   function ListNode(value = null) {
     return { value, next: null };
