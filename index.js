@@ -38,3 +38,17 @@ document.addEventListener("click", handleClick);
 function handleClick(event) {
   //
 }
+
+function listElement(value) {
+  const element = document.createElement("div");
+  element.classList.add("list-element");
+  const valueCell = document.createElement("div");
+  valueCell.classList.add("list-element__value");
+  const pointerCell = document.createElement("div");
+  pointerCell.classList.add("list-element__pointer");
+
+  element.appendChild(valueCell);
+  element.appendChild(pointerCell);
+
+  return element;
+}

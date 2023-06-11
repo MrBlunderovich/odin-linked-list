@@ -29,7 +29,23 @@ body {
   background-color: #ddd;
   width: min(80vw, 50rem);
   padding: 3rem;
-  display: grid;
+  display: flex;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, 5rem);
+  flex-wrap: wrap;
+}
+.list-element {
+  display: flex;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+.list-element > div {
+  padding: 0.5rem 1rem;
+}
+.list-element__value {
+  border-right: 1px solid #aaa;
+}
+.null {
+  padding: 0.5rem 0;
+  border: none;
+  font-style: italic;
 }
