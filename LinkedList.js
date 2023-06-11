@@ -64,7 +64,10 @@ export default function LinkedList(initialValues = []) {
     return false;
   }
 
-  function find(value) {
+  function find(value = undefined) {
+    if (value === undefined) {
+      return null;
+    }
     let currentElement = headPointer;
     for (let index = 0; index < size(); index++) {
       currentElement = currentElement.next;

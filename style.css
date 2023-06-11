@@ -37,6 +37,7 @@ body {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-block: 3rem;
 }
 .list-element {
   display: flex;
@@ -59,4 +60,14 @@ body {
 .head,
 .null {
   font-weight: bold;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.control {
+  padding: 0.5rem 1rem;
 }

@@ -36,15 +36,48 @@ console.log("toString:", newList.toString());
 console.log("toString:", newList.toString());
 
 const container = document.querySelector(".container");
-const nullElement = document.querySelector(".null");
+//const nullElement = document.querySelector(".null");
 
 document.addEventListener("click", handleClick);
 
 function handleClick(event) {
-  //
+  if (!event.target.matches(".control")) {
+    return;
+  }
+  const command = event.target.id;
+  switch (command) {
+    case "append":
+      newList.append(randomValue());
+      break;
+    case "prepend":
+      newList.prepend(randomValue());
+      break;
+    case "pop":
+      newList.pop();
+      break;
+    case "shift":
+      newList.removeAt(0);
+      break;
+    case "reverse":
+      newList.reverse();
+      break;
+
+    default:
+      console.warn(`Unknown command: ${command}`);
+      break;
+  }
+  renderList();
 }
 
 function renderList() {
+  container.innerHTML = `
+    <div class="list-element head">
+        <div class="list-element__value">HEAD</div>
+        <div class="list-element__pointer">-></div>
+    </div>
+    <div class="list-element null">null</div>
+    `;
+  const nullElement = document.querySelector(".null");
   newList.toArray().forEach((element) => {
     const newElement = listElement(element);
     container.insertBefore(newElement, nullElement);
@@ -70,3 +103,7 @@ function listElement(value) {
 window.onload = () => {
   renderList();
 };
+
+function randomValue() {
+  return Math.floor(Math.random() * 100);
+}
