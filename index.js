@@ -34,6 +34,7 @@ newList.reverse();
 console.log("newList.reverse();");
 console.log("toString:", newList.toString());
 console.log("toString:", newList.toString());
+newList.trimToSize(0);
 
 const container = document.querySelector(".container");
 //const nullElement = document.querySelector(".null");
