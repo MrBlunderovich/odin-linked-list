@@ -30,3 +30,11 @@ console.log("toString:", newList.toString());
 newList.trimToSize(3);
 console.log("newList.trimToSize(3);");
 console.log("toString:", newList.toString());
+
+const container = document.querySelector(".container");
+
+document.addEventListener("click", handleClick);
+
+function handleClick(event) {
+  //
+}
